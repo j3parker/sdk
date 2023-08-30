@@ -59,9 +59,13 @@ Copyright (c) .NET Foundation. All rights reserved.
     <EnableConfigurationBindingGenerator Condition="'$(EnableConfigurationBindingGenerator)' == ''">true</EnableConfigurationBindingGenerator>
   </PropertyGroup>
 
-  <!-- Enable the interceptors compiler feature by default for projects that use the RequestDelegateGenerator. -->
+  <!-- Set the namespaces emitted by the RequestDelegateGenerator for interception when applicable. -->
   <PropertyGroup Condition="'$(EnableRequestDelegateGenerator)' == 'true'">
-    <Features>$(Features);InterceptorsPreview</Features>
+    <InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);Microsoft.AspNetCore.Http.Generated</InterceptorsPreviewNamespaces>
+  </PropertyGroup>
+  <!-- Set the namespaces emitted by the ConfigurationBindingGenerator for interception when applicable. -->
+  <PropertyGroup Condition="'$(ConfigurationBindingGenerator)' == 'true'">
+    <InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);Microsoft.Extensions.Configuration.Binder.SourceGeneration</InterceptorsPreviewNamespaces>
   </PropertyGroup>
 
   <!--
